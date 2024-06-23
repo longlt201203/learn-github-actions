@@ -16,6 +16,6 @@ jobs:
         - uses: actions/setup-node@v4
           with:
             node-version: '20'
-        - run: echo $RELEASE_TAG
+        - run: echo ${{ github.action_ref }}
         - run: npm install -g bats
         - run: bats -v
