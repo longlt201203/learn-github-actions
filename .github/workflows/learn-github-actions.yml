@@ -5,6 +5,9 @@ on:
     branches:
       - 'releases/**'
 
+env:
+  RELEASE_TAG: ${{ github.action_ref }}
+
 jobs:
   check-bats-version:
     runs-on: ubuntu-latest
@@ -13,6 +16,6 @@ jobs:
         - uses: actions/setup-node@v4
           with:
             node-version: '20'
-        - run: echo ${{ github.ref }}
+        - run: echo $RELEASE_TAG
         - run: npm install -g bats
         - run: bats -v
